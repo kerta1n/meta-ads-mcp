@@ -1,0 +1,12 @@
+services:
+    fb-ads-mcp:
+        container_name: meta-ads-mcp
+        restart: unless-stopped
+        image: kertain/meta-ads-mcp:latest
+        ports:
+            - 8700:8700
+        environment:
+            - META_ACCESS_TOKEN=token-not-initialized  # Init token HERE so that you don't have to below
+            - TZ=America/New_York
+
+        command: python -m meta_ads_mcp --transport streamable-http --host 0.0.0.0 --port 8700
